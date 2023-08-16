@@ -1,6 +1,6 @@
 # GenBank Genomic FNA Downloader
 
-Use this tool to retrieve genomic `.fna` files from GenBank using accession numbers.
+Use this tool to retrieve genomic `.fna` files from GenBank using accession or assembly numbers.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -13,7 +13,7 @@ Use this tool to retrieve genomic `.fna` files from GenBank using accession numb
 
 ## Overview
 
-This script facilitates the fetching of genomic `.fna` files hosted on GenBank's FTP servers using provided accession numbers. This tool is invaluable for researchers and bioinformaticians who frequently deal with genomic sequences and need a streamlined way to retrieve specific `.fna` files from GenBank.
+This script facilitates the fetching of genomic `.fna` files hosted on GenBank's FTP servers using provided accession or assembly numbers. This tool is invaluable for researchers and bioinformaticians who frequently deal with genomic sequences and need a streamlined way to retrieve specific `.fna` files from GenBank.
 
 ## Requirements
 
@@ -48,7 +48,7 @@ Execute the script directly from the command line:
 
 ### Parameters:
 
-- `-i` or `--input`: Path to the input file containing the accession numbers. One number per line.
+- `-i` or `--input`: Path to the input file containing the accession or assembly numbers. One number per line.
 - `-o` or `--output`: Path to the output file where the resulting HTTPS links will be saved (default: `results.tsv`).
 
 ## Example
@@ -56,6 +56,7 @@ Execute the script directly from the command line:
 Given an input file `accessions.txt`:
 
 ```
+JAJLMS000000000
 GCA_000001405.28
 GCA_000002315.5
 ```
@@ -64,6 +65,7 @@ The resulting `results.tsv` might look like:
 
 ```
 Accession        Link
+JAJLMS000000000  https://ftp.ncbi.../GCA_023705435.1_ASM2370543v1_genomic.fna.gz
 GCA_000001405.28 https://ftp.ncbi.../GCA_000001405.28_genomic.fna.gz
 GCA_000002315.5  https://ftp.ncbi.../GCA_000002315.5_genomic.fna.gz
 ```
