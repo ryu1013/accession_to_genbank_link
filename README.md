@@ -23,12 +23,12 @@ This script facilitates the fetching of genomic `.fna` files hosted on GenBank's
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/ryu1013/accession_to_genebank_link.git
+   git clone https://github.com/ryu1013/accession_to_genbank_link.git
    ```
 
 2. Navigate to the cloned directory:
    ```sh
-   cd accession_to_genebank_link
+   cd accession_to_genbank_link
    ```
 
 3. Make it executable:
