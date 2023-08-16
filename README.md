@@ -68,3 +68,7 @@ With a custom output file:
 ## **Disclaimer**
 
 Ensure you have the necessary permissions to fetch and utilize data from GenBank. Always comply with NCBI's terms of service and usage guidelines.
+
+## Contributing
+
+If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcomed.
