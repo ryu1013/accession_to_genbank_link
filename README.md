@@ -1,82 +1,59 @@
-# GenBank Genomic FNA Downloader
+# GenBank Accession to HTTPS Link Converter
 
-Use this tool to retrieve genomic `.fna` files from GenBank using accession or assembly numbers.
+This tool assists users by converting GenBank accession numbers into HTTPS links based on a specified file format, making data retrieval more streamlined.
 
-## Table of Contents
-- [Overview](#overview)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Example](#example)
-- [Disclaimer](#disclaimer)
-- [Contributing](#contributing)
+## **Prerequisites**
 
-## Overview
+- Python 3.x
+- External Python Libraries: `requests` (needed for link verification)
+- [Entrez Direct Utilities](https://www.ncbi.nlm.nih.gov/books/NBK179288/)
 
-This script facilitates the fetching of genomic `.fna` files hosted on GenBank's FTP servers using provided accession or assembly numbers. This tool is invaluable for researchers and bioinformaticians who frequently deal with genomic sequences and need a streamlined way to retrieve specific `.fna` files from GenBank.
+## **Setup & Installation**
 
-## Requirements
+1. Install the `requests` library, which is essential for link verification:
 
-- NCBI's Entrez Direct command-line tools. Installation instructions are available [here](https://www.ncbi.nlm.nih.gov/books/NBK179288/).
+    ```bash
+    pip install requests
+    ```
 
-## Installation
+2. Setup Entrez Direct Utilities following the guide from [NCBI's Entrez Direct](https://www.ncbi.nlm.nih.gov/books/NBK179288/).
 
-1. Clone this repository:
-   ```sh
-   git clone https://github.com/ryu1013/accession_to_genbank_link.git
-   ```
+## **Usage**
 
-2. Navigate to the cloned directory:
-   ```sh
-   cd accession_to_genbank_link
-   ```
-
-3. Make it executable:
-   ```sh
-   chmod +x accession_to_genbank_link.py
-   ```
-
-3. Ensure you have the required tools and dependencies installed.
-
-## Usage
-
-Execute the script directly from the command line:
-
-```sh
-./accession_to_link_converter.py -i INPUT_FILE [-o OUTPUT_FILE]
+```bash
+./access_to_genbank_link.py -i INPUT_FILE -f FORMAT [-o OUTPUT_FILE]
 ```
 
-### Parameters:
+Where:
 
-- `-i` or `--input`: Path to the input file containing the accession or assembly numbers. One number per line.
-- `-o` or `--output`: Path to the output file where the resulting HTTPS links will be saved (default: `results.tsv`).
+- `INPUT_FILE`: Path to the file containing a list of accession numbers.
+- `FORMAT`: Desired file format to retrieve. Options include:
+  - `fna`: FASTA format for DNA sequences. Represents nucleotide sequences.
+  - `gff`: General feature format, containing annotations and feature-related data.
+  - `gtf`: General transfer format, a variant of GFF, typically used for gene annotations and exon structures.
+  - `faa`: FASTA format for amino acids, detailing protein sequences corresponding to genes.
+- `OUTPUT_FILE` (Optional): Designates the name of the output file. If not provided, defaults to `results.tsv`.
 
-## Example
+### **Examples**
 
-Given an input file `accessions.txt`:
+Retrieve `fna` format links from a list of accession numbers:
 
-```
-JSPI01
-JAJLMS000000000
-GCA_000258785.1
-```
-
-The resulting `results.tsv` might look like:
-
-```
-Accession        Link
-JSPI01           https://ftp.ncbi.../GCA_000779275.1_ASM77927v1_genomic.fna.gz
-JAJLMS000000000  https://ftp.ncbi.../GCA_023705435.1_ASM2370543v1_genomic.fna.gz
-GCA_000258785.1  https://ftp.ncbi.../GCA_000258785.1_genomic.fna.gz
+```bash
+./access_to_genbank_link.py -i accession_list.txt -f fna
 ```
 
-(Note: The actual links can vary based on the FTP server's structure and specific accession numbers.)
+With a custom output file:
 
-## Disclaimer
+```bash
+./access_to_genbank_link.py -i accession_list.txt -o my_output.tsv -f fna
+```
 
-- Always ensure you have the necessary permissions to download data.
-- The FTP server structure or URL format might change. Ensure tool compatibility with the current NCBI FTP structure.
+## **Features**
 
-## Contributing
+- **Custom Argument Parsing**: Enriched error messages with user-friendly help prompts.
+- **FTP to HTTPS Conversion**: Transforms FTP links to their HTTPS equivalents for improved accessibility.
+- **Link Verification**: Checks each link's validity using the `requests` library before committing to the output.
 
-If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcomed.
+## **Disclaimer**
+
+Ensure you have the necessary permissions to fetch and utilize data from GenBank. Always comply with NCBI's terms of service and usage guidelines.
