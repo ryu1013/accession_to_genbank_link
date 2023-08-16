@@ -56,6 +56,7 @@ Execute the script directly from the command line:
 Given an input file `accessions.txt`:
 
 ```
+JSPI01
 JAJLMS000000000
 GCA_000001405.28
 GCA_000002315.5
@@ -65,6 +66,7 @@ The resulting `results.tsv` might look like:
 
 ```
 Accession        Link
+JSPI01           https://ftp.ncbi.../GCA_000779275.1_ASM77927v1_genomic.fna.gz
 JAJLMS000000000  https://ftp.ncbi.../GCA_023705435.1_ASM2370543v1_genomic.fna.gz
 GCA_000001405.28 https://ftp.ncbi.../GCA_000001405.28_genomic.fna.gz
 GCA_000002315.5  https://ftp.ncbi.../GCA_000002315.5_genomic.fna.gz
