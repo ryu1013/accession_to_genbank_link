@@ -1,3 +1,6 @@
+물론입니다. 변경사항을 반영한 완성된 스크립트입니다:
+
+```python
 #!/usr/bin/env python3
 
 import argparse
@@ -26,8 +29,9 @@ def convert_ftp_link(ftp_link, file_format):
 def get_ftp_link_from_accession(accession):
     command = f'esearch -db assembly -query "{accession}" | esummary | xtract -pattern DocumentSummary -element FtpPath_GenBank'
     process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
-    ftp_path = process.communicate()[0].decode().strip()
-    return ftp_path if ftp_path else "Not Found"
+    ftp_paths = process.communicate()[0].decode().strip().split('\n')
+    unique_ftp_paths = list(set(ftp_paths))
+    return unique_ftp_paths if unique_ftp_paths else ["Not Found"]
 
 def is_link_valid(url):
     try:
@@ -43,13 +47,13 @@ def main(input_file, output_file, file_format):
         
         for line in f_in:
             accession = line.strip()
-            ftp_link = get_ftp_link_from_accession(accession)
-            if ftp_link == "Not Found":
-                continue
-            https_link = convert_ftp_link(ftp_link, file_format)
-            if not is_link_valid(https_link):
-                continue
-            csv_writer.writerow([accession, https_link])
+            ftp_links = get_ftp_link_from_accession(accession)
+            for ftp_link in ftp_links:
+                https_link = convert_ftp_link(ftp_link, file_format)
+                if ftp_link == "Not Found" or not is_link_valid(https_link):
+                    csv_writer.writerow([accession, "Not Found"])
+                else:
+                    csv_writer.writerow([accession, https_link])
 
 if __name__ == "__main__":
     parser = CustomArgumentParser(
@@ -74,3 +78,6 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     main(args.input, args.output, args.format)
+```
+
+이 스크립트는 accession 번호 목록을 입력 받아 해당 번호에 대응하는 FTP 링크를 반환하며, 유효하지 않거나 "Not Found"인 링크는 "Not Found"로 출력 파일에 저장됩니다.
