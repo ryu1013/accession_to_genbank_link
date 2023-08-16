@@ -20,11 +20,7 @@ This tool assists users by converting GenBank accession numbers into HTTPS links
 
 3. Download accession_to_genbank_link.py
 
-   ```sh
-   wget https://github.com/ryu1013/accession_to_genbank_link/blob/main/accession_to_genbank_link.py
-   ```
-
-4. Make it executable:
+4. Make it executable (if you use it in linux):
    ```sh
    chmod +x accession_to_genbank_link.py
    ```
