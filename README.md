@@ -28,7 +28,12 @@ This script facilitates the fetching of genomic `.fna` files hosted on GenBank's
 
 2. Navigate to the cloned directory:
    ```sh
-   cd [YOUR REPOSITORY NAME]
+   cd accession_to_genebank_link
+   ```
+
+3. Make it executable:
+   ```sh
+   chmod +x accession_to_genbank_link.py
    ```
 
 3. Ensure you have the required tools and dependencies installed.
