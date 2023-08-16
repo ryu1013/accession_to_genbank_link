@@ -18,6 +18,17 @@ This tool assists users by converting GenBank accession numbers into HTTPS links
 
 2. Setup Entrez Direct Utilities following the guide from [NCBI's Entrez Direct](https://www.ncbi.nlm.nih.gov/books/NBK179288/).
 
+3. Download accession_to_genbank_link.py
+
+   ```sh
+   wget https://github.com/ryu1013/accession_to_genbank_link/blob/main/accession_to_genbank_link.py
+   ```
+
+4. Make it executable:
+   ```sh
+   chmod +x accession_to_genbank_link.py
+   ```
+
 ## **Usage**
 
 ```bash
